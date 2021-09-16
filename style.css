@@ -1,0 +1,17 @@
+.movie{
+    width:80%;
+    margin:0 auto;
+    color:white;
+    background-color: black;
+    padding:20px;
+    margin-bottom:10px;
+}
+.login{
+    position:absolute;
+    padding:30px;
+    border:1px solid green;
+    background-color: white;
+    top:100px;
+    left: 30%;
+    width: 40%;
+}

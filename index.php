@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,6 +58,29 @@
                 } 
                 elseif($key=="login"){
                     
+                    
+
+
+                    $result = mysqli_query($conn, "SELECT * from users");
+                    $resultCheck = mysqli_num_rows($result);
+                    $logged=false;
+                    if ($resultCheck > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            if($row['username']==$_POST['username']&&
+                                password_verify($_POST['password'], $row['password'])) {
+                                echo("loged");
+                                $logged=true;
+                                $_SESSION["admin"] = true;
+                                $address = substr($_SERVER['PHP_SELF'], 0, -9);
+                                header('Location: ' . $address . "admin.php");
+                            }
+
+
+                        }
+                    }
+                    if(!$logged){
+                        echo("Wrong username or password");
+                    }
                 }
 
             }
